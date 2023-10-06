@@ -1,0 +1,22 @@
+# editor
+.vscode
+
+# Environments
+.venv
+
+# outputs
+videos
+q_net.h5
+*.npy
+
+# Byte-compiled / optimized / DLL files
+__pycache__
+
+# Distribution / packaging
+.Python
+
+# pyenv
+.python-version
+
+#others
+demo.py

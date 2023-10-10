@@ -6,7 +6,7 @@
 
 # outputs
 videos
-q_net.h5
+weights
 *.npy
 
 # Byte-compiled / optimized / DLL files

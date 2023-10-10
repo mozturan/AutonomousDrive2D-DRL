@@ -8,7 +8,7 @@ display = Display(visible=0, size=(1400, 900))
 display.start()
 
 
-def record_videos(env, video_folder="videos"):
+def record_videos(env, video_folder="videos/trainings/ddqn"):
     wrapped = RecordVideo(env, video_folder=video_folder, episode_trigger=lambda e: True)
 
     # Capture intermediate frames

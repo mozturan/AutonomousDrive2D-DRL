@@ -12,7 +12,6 @@ weights
 /demos/
 *.mp4
 *.png 
-ddqn/
 *.json
 
 # Byte-compiled / optimized / DLL files

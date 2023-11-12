@@ -76,7 +76,6 @@ class DDQNAgent:
             qs_= self.q_eval.predict(observation, verbose=0) # type: ignore
             action_index = np.argmax(qs_)
             action = self.discrete_action_space[action_index]
-            print(qs_)
         else:
             action_index = np.random.randint(0, self.n_actions)
             action = self.discrete_action_space[action_index]

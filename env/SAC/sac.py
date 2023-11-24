@@ -110,7 +110,7 @@ class ActorNetwork(keras.Model):
         return action, log_probs
     
 class Agent:
-    def __init__(self, alpha=0.0003, beta=0.0003, input_dims=[8],
+    def __init__(self, alpha=0.003, beta=0.003, input_dims=[8],
             env=None, gamma=0.9, n_actions=1, max_size=100000, tau=0.005,
             layer1_size=256, layer2_size=256, batch_size=256, reward_scale=1):
         self.gamma = gamma

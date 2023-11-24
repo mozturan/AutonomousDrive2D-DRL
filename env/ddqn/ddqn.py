@@ -43,14 +43,14 @@ class DDQNAgent:
         # self.q_eval.summary()
         # plot_model(self.q_eval, to_file='./model_ddqn.png')
 
-        #* Custom tensorboard
+        #! Deactivated for testing
         self.tensorboard = board.ModifiedTensorBoard(log_dir=f"logs/")
 
     def _make_model(self):
         
         model = Sequential()
-        model.add( Dense(512, activation='relu', input_dim = self.obs_shape[0]) )
-        model.add( Dense(512, activation='relu') )
+        model.add( Dense(256, activation='relu', input_dim = self.obs_shape[0]) )
+        model.add( Dense(256, activation='relu') )
         model.add( Dense( self.n_actions))
         model.compile(loss='mse',optimizer= Adam(learning_rate = self.learning_rate),metrics=["accuracy"]) # type: ignore
  
@@ -74,6 +74,11 @@ class DDQNAgent:
             observation = tf.expand_dims(observation, axis=0)
 
             qs_= self.q_eval.predict(observation, verbose=0) # type: ignore
+
+            #*----------------------------------------------------------------
+            #! Added for testing only
+            # print("Predicted Q values: ", qs_)
+            #*----------------------------------------------------------------
             action_index = np.argmax(qs_)
             action = self.discrete_action_space[action_index]
         else:

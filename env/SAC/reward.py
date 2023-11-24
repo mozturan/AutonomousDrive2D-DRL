@@ -5,7 +5,7 @@ def _reward(info, x, y):
     done = False
     rewards = info["rewards"]
     r_alive = 0.1
-    r_terminal = -5.
+    r_terminal = -500.
     # _distance = np.sqrt((x**2) + (y**2))
     # r_distance = 1. / _distance
     # _distance_cost = -0.3

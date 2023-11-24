@@ -16,7 +16,7 @@ weights
 *.png 
 *.json
 *.v2
-/highway/
+/highway
 previously/
 
 # Byte-compiled / optimized / DLL files

@@ -12,18 +12,18 @@ def _reward(info, observation):
 
     if lidar_detect != 0:
         distance_reward = sum(coordinate**2 for coordinate in relative_distance)
-        # distance_reward = 1-np.sqrt(distance_reward)
+        distance_reward = 1-(np.sqrt(distance_reward)*2)
 
-        distance_reward = 1/np.sqrt(distance_reward)
+        # distance_reward = 1/np.sqrt(distance_reward)
     else:
         distance_reward = 0
 
     if not rewards["on_road_reward"]:
-        reward = -1.
+        reward = -100.
     elif rewards["collision_reward"]:
-        reward = -1. 
+        reward = -100. 
     else:
-        reward = rewards["lane_centering_reward"] + (0.3*alive) - (0.1*distance_reward)
+        reward = rewards["lane_centering_reward"] - (distance_reward)
 
     # config = {
     #     "collision_reward": -1.0,

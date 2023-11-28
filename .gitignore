@@ -3,21 +3,16 @@
 
 # Environments
 .venv
-demo.ipynb
 
 # outputs
 videos/
-weights
+weights/
+logs/
 *.npy
 *h5
-/demos
-/ddqn_demo
 *.mp4
 *.png 
-*.json
 *.v2
-/highway
-previously/
 
 # Byte-compiled / optimized / DLL files
 __pycache__
@@ -29,9 +24,6 @@ __pycache__
 .python-version
 
 #others
-demo.py
-as.py
-rew.ipynb
 
 #log files
 unitylog.txt

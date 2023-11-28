@@ -8,6 +8,7 @@ import keras.backend as K
 tf.random.set_seed(26)
 import numpy as np
 import board
+import board_steps
 from buffer import ReplayBuffer
 import gc
 
@@ -30,8 +31,10 @@ class DDQNAgent:
         self.obs_shape = obs_shape
         self.learning_rate = learning_rate
 
-        self.discrete_action_space = np.array([-0.5,-0.4,-0.3,-0.2,-0.1,0.0,0.1,0.2,0.3,0.4,0.5,])
-        
+        # self.discrete_action_space = np.array([-0.5,-0.4,-0.3,-0.2,-0.1,0.0,0.1,0.2,0.3,0.4,0.5,])
+        array_size = 21  # Adjust the size of the array as needed
+        self.discrete_action_space = np.linspace(-1, 1, array_size)
+
         self.n_actions = len(self.discrete_action_space)
         self.action_space = [i for i in range(self.n_actions)]
 
@@ -40,11 +43,11 @@ class DDQNAgent:
                         
         self.q_eval = self._make_model()
         self.q_target = self._make_model()      #we keep a target model which we update every K timesteps
-        # self.q_eval.summary()
+        self.q_eval.summary()
         # plot_model(self.q_eval, to_file='./model_ddqn.png')
 
-        #! Deactivated for testing
         self.tensorboard = board.ModifiedTensorBoard(log_dir=f"logs/")
+        self.tensorboard_steps = board_steps.ModifiedTensorBoard(log_dir=f"logs/")
 
     def _make_model(self):
         

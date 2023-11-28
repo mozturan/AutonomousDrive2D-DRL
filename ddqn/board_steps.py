@@ -2,10 +2,19 @@ import tensorflow as tf
 import numpy as np
 import os
 import time
-MODEL_NAME = "ddqn_episodes"
+MODEL_NAME = "ddqn_steps"
 # import tensorboard
 from keras.callbacks import TensorBoard
+# tfe = tf.contrib.eager
+# if not tf.executing_eagerly():
+#             # Enable tensorflow Eager execution
+#             tfe.enable_eager_execution()
 
+# try:
+# 	     tf.enable_eager_execution ()
+# except Exception:
+# 	         pass
+# Own Tensorboard class
 class ModifiedTensorBoard(TensorBoard):
 
     # *Overriding init to set initial step and writer (we want one log file for all .fit() calls)
@@ -48,13 +57,11 @@ class ModifiedTensorBoard(TensorBoard):
     #* Creates writer, writes custom metrics and closes writer
     def update_stats(self, **stats):
         self._write_logs(stats, self.step)
-        self.step += 1
 
     #* Added because of version
     def _write_logs(self, logs, index):
         with self.writer.as_default():
             for name, value in logs.items():
                 tf.summary.scalar(name, value, step=index)
+                self.step += 1
                 self.writer.flush()
-
-

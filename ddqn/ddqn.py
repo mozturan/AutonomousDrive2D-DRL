@@ -11,6 +11,7 @@ import board
 import board_steps
 from buffer import ReplayBuffer
 import gc
+import time
 
 
 class DDQNAgent:
@@ -31,7 +32,6 @@ class DDQNAgent:
         self.obs_shape = obs_shape
         self.learning_rate = learning_rate
 
-        # self.discrete_action_space = np.array([-0.5,-0.4,-0.3,-0.2,-0.1,0.0,0.1,0.2,0.3,0.4,0.5,])
         array_size = 21  # Adjust the size of the array as needed
         self.discrete_action_space = np.linspace(-1, 1, array_size)
 
@@ -44,10 +44,11 @@ class DDQNAgent:
         self.q_eval = self._make_model()
         self.q_target = self._make_model()      #we keep a target model which we update every K timesteps
         self.q_eval.summary()
+        print("summary")
         # plot_model(self.q_eval, to_file='./model_ddqn.png')
 
-        self.tensorboard = board.ModifiedTensorBoard(log_dir=f"logs/")
-        self.tensorboard_steps = board_steps.ModifiedTensorBoard(log_dir=f"logs/")
+        self.tensorboard = board.ModifiedTensorBoard(log_dir=f"logs/{board.MODEL_NAME}-{int(time.time())}")
+        self.tensorboard_steps = board_steps.ModifiedTensorBoard(log_dir=f"logs/{board_steps.MODEL_NAME}-{int(time.time())}")
 
     def _make_model(self):
         

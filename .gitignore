@@ -9,7 +9,7 @@ videos/
 weights/
 logs/
 *.npy
-*h5
+*.h5
 *.mp4
 *.png 
 *.v2

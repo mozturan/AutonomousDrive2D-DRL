@@ -32,7 +32,7 @@ class DDQNAgent:
         self.obs_shape = obs_shape
         self.learning_rate = learning_rate
 
-        array_size = 21  # Adjust the size of the array as needed
+        array_size = 11  # Adjust the size of the array as needed
         self.discrete_action_space = np.linspace(-1, 1, array_size)
 
         self.n_actions = len(self.discrete_action_space)

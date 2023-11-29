@@ -13,7 +13,7 @@ logs/
 *.mp4
 *.png 
 *.v2
-trash/
+first_gen/
 
 # Byte-compiled / optimized / DLL files
 __pycache__

@@ -15,6 +15,7 @@ logs/
 *.v2
 first_gen/
 fails/
+ddqn_tuned/
 
 # Byte-compiled / optimized / DLL files
 __pycache__

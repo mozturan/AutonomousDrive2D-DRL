@@ -48,7 +48,7 @@ class DDQNAgent:
         # plot_model(self.q_eval, to_file='./model_ddqn.png')
 
         self.tensorboard = board.ModifiedTensorBoard(log_dir=f"logs/{board.MODEL_NAME}-{int(time.time())}")
-        self.tensorboard_steps = board_steps.ModifiedTensorBoard(log_dir=f"logs/{board_steps.MODEL_NAME}-{int(time.time())}")
+        # self.tensorboard_steps = board_steps.ModifiedTensorBoard(log_dir=f"logs/{board_steps.MODEL_NAME}-{int(time.time())}")
 
     def _make_model(self):
         

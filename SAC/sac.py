@@ -15,7 +15,7 @@ import sys
 import random as rndm
 import numpy as np
 import board
-
+import time
 
 class CriticNetwork(keras.Model):
     def __init__(self, n_actions, fc1_dims=128, fc2_dims=128,
@@ -135,7 +135,7 @@ class Agent:
         self.scale = reward_scale
         self.update_network_parameters(tau=1)
         #* Custom tensorboard
-        self.tensorboard = board.ModifiedTensorBoard(log_dir=f"logs/")
+        self.tensorboard = board.ModifiedTensorBoard(log_dir=f"logs/{board.MODEL_NAME}-{int(time.time())}")
 
 
     def choose_action(self, observation):

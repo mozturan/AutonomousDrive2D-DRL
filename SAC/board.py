@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import os
 import time
-MODEL_NAME = "sac_"
+MODEL_NAME = "ddqn_episodes"
 # import tensorboard
 from keras.callbacks import TensorBoard
 

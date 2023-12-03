@@ -53,8 +53,8 @@ class DDQNAgent:
     def _make_model(self):
         
         model = Sequential()
-        model.add( Dense(256, activation='relu', input_dim = self.obs_shape[0]) )
-        model.add( Dense(256, activation='relu') )
+        model.add( Dense(128, activation='relu', input_dim = self.obs_shape[0]) )
+        model.add( Dense(128, activation='relu') )
         model.add( Dense( self.n_actions))
         model.compile(loss='mse',optimizer= Adam(learning_rate = self.learning_rate),metrics=["accuracy"]) # type: ignore
  

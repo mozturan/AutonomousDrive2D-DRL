@@ -160,6 +160,7 @@ class Agent:
 
     def save_models(self, episode):
         print('... saving models ...')
+        os.mkdir(f"weights/{episode}") 
         self.actor.save_weights(f"weights/{episode}/self.actor.checkpoint_file.h5")
         self.critic_1.save_weights(f"weights/{episode}/self.critic_1.checkpoint_file.h5")
         self.critic_2.save_weights(f"weights/{episode}/self.critic_2.checkpoint_file.h5")

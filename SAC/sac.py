@@ -18,7 +18,7 @@ import board
 
 
 class CriticNetwork(keras.Model):
-    def __init__(self, n_actions, fc1_dims=512, fc2_dims=512,
+    def __init__(self, n_actions, fc1_dims=128, fc2_dims=128,
             name='critic', chkpt_dir='tmp/sac'):
         super(CriticNetwork, self).__init__()
         self.fc1_dims = fc1_dims
@@ -41,7 +41,7 @@ class CriticNetwork(keras.Model):
         return q
 
 class ValueNetwork(keras.Model):
-    def __init__(self, fc1_dims=512, fc2_dims=512,
+    def __init__(self, fc1_dims=128, fc2_dims=128,
             name='value', chkpt_dir='tmp/sac'):
         super(ValueNetwork, self).__init__()
         self.fc1_dims = fc1_dims
@@ -64,8 +64,8 @@ class ValueNetwork(keras.Model):
 
 class ActorNetwork(keras.Model):
 
-    def __init__(self, max_action, fc1_dims=512,
-            fc2_dims=512, n_actions=2, name='actor', chkpt_dir='tmp/sac'):
+    def __init__(self, max_action, fc1_dims=128,
+            fc2_dims=128, n_actions=2, name='actor', chkpt_dir='tmp/sac'):
         super(ActorNetwork, self).__init__()
         self.fc1_dims = fc1_dims
         self.fc2_dims = fc2_dims
@@ -112,7 +112,7 @@ class ActorNetwork(keras.Model):
 class Agent:
     def __init__(self, alpha=0.003, beta=0.003, input_dims=[8],
             env=None, gamma=0.9, n_actions=1, max_size=100000, tau=0.005,
-            layer1_size=256, layer2_size=256, batch_size=256, reward_scale=1):
+            layer1_size=128, layer2_size=128, batch_size=64, reward_scale=1):
         self.gamma = gamma
         self.tau = tau
         self.memory = ReplayBuffer(max_size, input_dims, n_actions)
@@ -158,25 +158,25 @@ class Agent:
 
         self.target_value.set_weights(weights)
 
-    def save_models(self):
+    def save_models(self, episode):
         print('... saving models ...')
-        self.actor.save_weights("self.actor.checkpoint_file.h5")
-        self.critic_1.save_weights("self.critic_1.checkpoint_file.h5")
-        self.critic_2.save_weights("self.critic_2.checkpoint_file.h5")
-        self.value.save_weights("self.value.checkpoint_file.h5")
-        self.target_value.save_weights("self.target_value.checkpoint_file.h5")
+        self.actor.save_weights(f"weights/{episode}/self.actor.checkpoint_file.h5")
+        self.critic_1.save_weights(f"weights/{episode}/self.critic_1.checkpoint_file.h5")
+        self.critic_2.save_weights(f"weights/{episode}/self.critic_2.checkpoint_file.h5")
+        self.value.save_weights(f"weights/{episode}/self.value.checkpoint_file.h5")
+        self.target_value.save_weights(f"weights/{episode}/self.target_value.checkpoint_file.h5")
 
-    def load_models(self):
+    def load_models(self, episode):
 
         print('... loading models ...')
-        self.actor.load_weights("self.actor.checkpoint_file.h5")
-        self.critic_1.load_weights("self.critic_1.checkpoint_file.h5")
-        self.critic_2.load_weights("self.critic_2.checkpoint_file.h5")
-        self.value.load_weights("self.value.checkpoint_file.h5")
-        self.target_value.load_weights("self.target_value.checkpoint_file.h5")
+        self.actor.load_weights(f"weights/{episode}/self.actor.checkpoint_file.h5")
+        self.critic_1.load_weights(f"weights/{episode}/self.critic_1.checkpoint_file.h5")
+        self.critic_2.load_weights(f"weights/{episode}/self.critic_2.checkpoint_file.h5")
+        self.value.load_weights(f"weights/{episode}/self.value.checkpoint_file.h5")
+        self.target_value.load_weights(f"weights/{episode}/self.target_value.checkpoint_file.h5")
 
     def learn(self):
-        if self.memory.mem_cntr < self.batch_size:
+        if self.memory.mem_cntr < 100:
             return
 
         state, action, reward, new_state, done = \

@@ -14,6 +14,8 @@ logs/
 *.png 
 *.v2
 extras/
+two_acts/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__

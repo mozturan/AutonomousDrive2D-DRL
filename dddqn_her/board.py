@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import os
 import time
-MODEL_NAME = "SAC_episodes_256Batch_NO-offRoad"
+MODEL_NAME = "Dddqn_h"
 # import tensorboard
 from keras.callbacks import TensorBoard
 

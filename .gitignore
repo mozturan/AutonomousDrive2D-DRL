@@ -13,9 +13,7 @@ logs/
 *.mp4
 *.png 
 *.v2
-first_gen/
-fails/
-ddqn_tuned/
+extras/
 
 # Byte-compiled / optimized / DLL files
 __pycache__

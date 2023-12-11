@@ -111,14 +111,14 @@ class ActorNetwork(keras.Model):
     
 class Agent:
     def __init__(self, alpha=0.003, beta=0.003, input_dims=[8],
-            env=None, gamma=0.9, n_actions=1, max_size=100000, tau=0.005,
+            env=None, gamma=0.9, n_actions=1, max_size=100000, tau=0.05,
             layer1_size=128, layer2_size=128, batch_size=256, reward_scale=1):
         self.gamma = gamma
         self.tau = tau
         self.memory = ReplayBuffer(max_size, input_dims, n_actions)
         self.batch_size = batch_size
         self.n_actions = n_actions
-
+        self.temperature = 0.1
         self.actor = ActorNetwork(n_actions=n_actions, name='actor',
                                     max_action= 1.0 )
         self.critic_1 = CriticNetwork(n_actions=n_actions, name='critic_1')
@@ -177,7 +177,7 @@ class Agent:
         self.target_value.load_weights(f"weights/{episode}/self.target_value.checkpoint_file.h5")
 
     def learn(self):
-        if self.memory.mem_cntr < 300:
+        if self.memory.mem_cntr < 100:
             return
 
         state, action, reward, new_state, done = \
@@ -200,7 +200,7 @@ class Agent:
             critic_value = tf.squeeze(
                                 tf.math.minimum(q1_new_policy, q2_new_policy), 1)
 
-            value_target = critic_value - log_probs
+            value_target = critic_value - (self.temperature*log_probs)
             value_loss = 0.5 * keras.losses.MSE(value, value_target)
 
         value_network_gradient = tape.gradient(value_loss,
@@ -220,7 +220,7 @@ class Agent:
             critic_value = tf.squeeze(tf.math.minimum(
                                         q1_new_policy, q2_new_policy), 1)
 
-            actor_loss = log_probs - critic_value
+            actor_loss = (self.temperature*log_probs) - critic_value
             actor_loss = tf.math.reduce_mean(actor_loss)
 
         actor_network_gradient = tape.gradient(actor_loss,
@@ -251,4 +251,3 @@ class Agent:
 
         gc.collect()
         K.clear_session()
-

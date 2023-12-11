@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import os
 import time
-MODEL_NAME = "SAC_episodes_256Batch_Reward_shaped"
+MODEL_NAME = "SAC_episodes_256Batch_Reward_shaped_and tuned"
 # import tensorboard
 from keras.callbacks import TensorBoard
 

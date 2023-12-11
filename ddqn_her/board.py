@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import os
 import time
-MODEL_NAME = "ddqn_HER"
+MODEL_NAME = "ddqn_HER_RewardShaped"
 # import tensorboard
 from keras.callbacks import TensorBoard
 

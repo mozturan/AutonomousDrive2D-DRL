@@ -1,8 +1,9 @@
 import numpy as np
 
-# Example 1
-random_value = np.random.uniform(-1, 1)
-print(random_value)
+a = 1000
 
-random_value_inclusive = np.random.choice([-1, 1])
-print(random_value_inclusive)
+for i in range(1100):
+
+    if a & i == 0:
+        print(i)
+

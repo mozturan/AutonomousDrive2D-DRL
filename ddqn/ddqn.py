@@ -142,7 +142,7 @@ class DDQNAgent:
 
         #* If counter reaches set value, update target network with weights of main network
         #* it will update it at the very beginning also
-        if self.memory.mem_cntr & self.replace_target == 0:
+        if self.memory.mem_cntr % self.replace_target == 0:
             self.update_network_parameters()
             print("Target Updated")
 

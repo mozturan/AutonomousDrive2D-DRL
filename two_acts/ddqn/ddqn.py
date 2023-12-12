@@ -32,7 +32,7 @@ class DDQNAgent:
         self.obs_shape = obs_shape
         self.learning_rate = learning_rate
 
-        self.steering = np.linspace(-1, 1, 7)
+        self.steering = np.linspace(-1, 1, 9)
         self.throttle = np.linspace(-1, 1, 3)
 
         # Create a grid of all possible pairs

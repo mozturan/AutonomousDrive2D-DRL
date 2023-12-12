@@ -6,11 +6,11 @@ class observation_shape:
         def __init__(self, obs, info, num_history):
             self.num_history = num_history
             self.observation_shape = obs.shape
-            infos = np.array([info["speed"], info["action"][0]], dtype=np.float16)
+            infos = np.array([info["speed"], info["action"][0], info["action"][1]], dtype=np.float16)
             self.info_shape = infos.shape
             
         def info_edit(self, info):
-            return np.array([info["speed"], info["action"][0]])
+            return np.array([info["speed"], info["action"][0], info["action"][1]])
                                     
         def reset(self):
             

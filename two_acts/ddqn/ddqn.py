@@ -32,8 +32,18 @@ class DDQNAgent:
         self.obs_shape = obs_shape
         self.learning_rate = learning_rate
 
-        array_size = 11  # Adjust the size of the array as needed
-        self.discrete_action_space = np.linspace(-1, 1, array_size)
+        self.steering = np.linspace(-1, 1, 7)
+        self.throttle = np.linspace(-1, 1, 3)
+
+        # Create a grid of all possible pairs
+        grid1, grid2 = np.meshgrid(self.steering, self.throttle)
+
+        # Reshape to get a 2D array of all permutations
+        self.discrete_action_space = np.column_stack((grid1.ravel(), grid2.ravel()))
+
+
+        # Permutation of two numpy arrays
+        permutation_ = np.random.permutation
 
         self.n_actions = len(self.discrete_action_space)
         self.action_space = [i for i in range(self.n_actions)]

@@ -1,20 +1,16 @@
-# editor
-.vscode
 
 # Environments
-.venv
+
 
 # outputs
 videos/
 weights/
-logs/
 *.npy
 *.h5
 *.mp4
 *.png 
-*.v2
 extras/
-try.ipynb
+
 
 
 # Byte-compiled / optimized / DLL files

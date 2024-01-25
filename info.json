@@ -1,0 +1,11 @@
+{
+
+    "Total Train Steps for 450 episodes": {
+                    "SAC_CNN": 26210,
+                    "DDQN-PER_CNN": 17858,
+                    "SAC_KINEMATICS": 51648,
+                    "DDQN-PER_KINEMATICS": 38614
+    }
+
+    
+}

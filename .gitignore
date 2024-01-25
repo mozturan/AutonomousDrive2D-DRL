@@ -8,7 +8,6 @@ weights/
 *.npy
 *.h5
 *.mp4
-*.png 
 extras/
 
 

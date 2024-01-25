@@ -1,6 +1,6 @@
 
 # Environments
-
+.venv
 
 # outputs
 videos/
@@ -9,8 +9,6 @@ weights/
 *.h5
 *.mp4
 extras/
-
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__

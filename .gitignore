@@ -1,6 +1,7 @@
 
 # Environments
 .venv
+.vscode
 
 # outputs
 videos/
@@ -9,6 +10,7 @@ weights/
 *.h5
 *.mp4
 extras/
+logs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__
@@ -23,3 +25,7 @@ __pycache__
 
 #log files
 unitylog.txt
+
+experiment.ipynb
+racetrack_cnn.ipynb
+*.png

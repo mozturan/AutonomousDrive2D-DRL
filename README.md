@@ -7,11 +7,9 @@ Our primary goal was to discern how the choice of observation space influences t
 # **NOTE!**
 This is work in progress so there are things to do:
 - [ ] Modulate the code
-- [ ] Experiment with different CNN architecture
 - [ ] Implement some other DRL algorithms
-- [ ] Expand project with collision avoidence task
-- [ ] Implement more advanced experiment tracking tool
-- [ ] Containerize with Docker
+- [ ] Expand project with collision avoidence task (This needs a new reward function)
+- [x] Implement more advanced experiment tracking tool (Wandb instead of tensorboard is better)
 
 ## Simulation Environment
 ![Screenshot from 2024-02-14 19-03-17](https://github.com/rafiqollective/thesis/assets/89272933/10953242-8b1b-415b-862d-fda8bbbfb8d4)
